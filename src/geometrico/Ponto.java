@@ -1,8 +1,8 @@
 package geometrico;
 
 public class Ponto {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Ponto(int x, int y) {
         this.x = x;
