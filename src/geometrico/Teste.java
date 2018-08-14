@@ -18,19 +18,41 @@ public class Teste {
         for (Ponto i : array) {
             System.out.println(i.toString());
         }
-        pontoProximoQuad();
+        System.out.println(pontoProximoQuad());
+
+        pontoProximoLog(array, array.length);
     }
 
     public static double pontoProximoQuad() {
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; i < array.length - 1; j++) {
-                if ((Math.sqrt(((array[i].getX() - array[j].getX()) ^ 2) + ((array[i].getY() - array[j].getY()) ^ 2))) < distance) {
+        for (int i = 0; i < array.length - 2; i++) {
+            for (int j = 1; j < array.length - 1; j++) {
+                if ((distancia(array[i], array[j]) < distance)) {
                     distance = Math.sqrt(((array[i].getX() - array[j].getX()) ^ 2) + ((array[i].getY() - array[j].getY()) ^ 2));
-                    System.out.println(distance);
                 }
             }
         }
         return distance;
     }
 
+    public static double pontoProximoLog(Ponto[] array, int n) {
+        HeapSortPointX.heapSort(array);
+        Ponto[] X = array;
+        HeapSortPointY.heapSort(array);
+        Ponto[] Y = array;
+        pontoProximoLogRec(X, Y, X.length);
+        return 0;
+    }
+
+    public static double pontoProximoLogRec(Ponto[] X, Ponto[] Y, int n) {
+        if (n <= 3) {
+            int dist = 0;
+            return Math.min(distancia(X[2], X[0]), Math.min(distancia(X[0], X[1]), distancia(X[1], X[2])));
+        }else{
+continuar pagina 48
+        }
+    }
+
+    public static double distancia(Ponto ini, Ponto fim) {
+        return Math.sqrt(((ini.getX() - fim.getX()) ^ 2) + ((ini.getY() - fim.getY()) ^ 2));
+    }
 }
