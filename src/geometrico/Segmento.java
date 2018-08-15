@@ -14,20 +14,17 @@ public class Segmento {
         this.fim = fim;
     }
 
+    public Segmento(double xi, double yi, double xf, double yf) {
+        this.inicio = new Ponto(xi, yi);
+        this.fim = new Ponto(xf, yf);
+    }
+
     public Ponto getInicio() {
         return inicio;
     }
 
-    public void setInicio(Ponto inicio) {
-        this.inicio = inicio;
-    }
-
     public Ponto getFim() {
         return fim;
-    }
-
-    public void setFim(Ponto fim) {
-        this.fim = fim;
     }
 
     @Override
@@ -44,7 +41,7 @@ public class Segmento {
         return Objects.hash(getInicio(), getFim());
     }
 
-    public double distancia() {
-        return Math.sqrt(((fim.getX() - inicio.getX()) ^ 2) + ((fim.getY() - inicio.getY()) ^ 2));
+    public Double getComprimento() {
+        return this.inicio.getDistancia(this.fim);
     }
 }
